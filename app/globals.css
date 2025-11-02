@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  @apply w-0 h-0;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
