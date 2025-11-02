@@ -52,7 +52,12 @@ export const PropertyCard = ({ property }: { property: Property }) => {
         {/* Featured Badge - Top Left */}
         {property.featured && (
           <div className="absolute top-3 left-3">
-            <Badge variant={"secondary"}>Featured</Badge>
+            <Badge
+              className="bg-green-800 text-white dark:bg-green-600"
+              variant={"secondary"}
+            >
+              Featured
+            </Badge>
           </div>
         )}
 
