@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { Bookmark, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Property } from "../types/property";
@@ -16,8 +16,8 @@ export const PropertyCard = ({ property }: { property: Property }) => (
         />
       </div>
       {property.isGuestFavorite && (
-        <div className="absolute top-3 right-3 rounded-md bg-background px-2 py-1 font-bold text-foreground text-xs shadow-sm">
-          Guest favorite
+        <div className="absolute top-3 right-3 rounded-md bg-background p-1 font-bold text-foreground text-xs shadow-sm">
+          <Bookmark className="h-4 w-4 align-middle" />
         </div>
       )}
     </div>
