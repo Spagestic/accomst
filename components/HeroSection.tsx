@@ -11,7 +11,7 @@ import { Label } from "./ui/label";
 
 export default function HeroSection() {
   return (
-    <section className="relative mt-6 h-[64vh] overflow-hidden rounded-2xl">
+    <section className="relative mt-6 h-[84vh] overflow-hidden rounded-2xl sm:h-[64vh]">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-center bg-cover"
@@ -25,10 +25,10 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative flex h-full flex-col items-center justify-center px-4 text-center">
-        <h1 className="mb-4 max-w-5xl font-bold text-3xl text-white leading-tight md:text-5xl">
+        <h1 className="mb-4 max-w-5xl font-bold text-2xl text-white leading-tight md:text-5xl">
           Unlock Homeownership in Hong Kong
         </h1>
-        <p className="mb-8 max-w-3xl text-sm text-white/90 md:text-lg">
+        <p className="mb-8 max-w-3xl text-white/90 text-xs md:text-lg">
           Buy your first stake, reduce your rent, and staircase to full
           ownership—fractional, flexible, and fair. Empowering renters to become
           owners, one share at a time.
