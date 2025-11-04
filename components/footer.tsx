@@ -1,8 +1,7 @@
 import { ArrowUpRight, Facebook, Instagram, Twitter } from "lucide-react";
+import { Suspense } from "react";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   const footerLinks = {
     Platform: [
       { name: "How It Works", href: "/#how-it-works" },
@@ -102,7 +101,10 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="flex items-center justify-center border-neutral-200 border-t pt-8">
           <div className="flex flex-col items-center space-y-2 text-center text-neutral-500 text-sm sm:flex-row sm:space-x-6 sm:space-y-0">
-            <p>&copy; {currentYear} Accomst. All rights reserved.</p>
+            <p>
+              &copy; {<Suspense>{currentYear()}</Suspense>} Accomst. All rights
+              reserved.
+            </p>
             <div className="flex space-x-6">
               <a
                 className="transition-colors hover:text-neutral-700"
@@ -128,4 +130,9 @@ export function Footer() {
       </div>
     </footer>
   );
+}
+
+async function currentYear() {
+  "use cache";
+  return await new Date().getFullYear();
 }
