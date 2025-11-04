@@ -1,5 +1,6 @@
 // app/page.tsx (or wherever you're using the grid)
 /** biome-ignore-all lint/style/noMagicNumbers: minor */
+import { Footer } from "@/components/footer";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import PropertyGrid from "@/components/property-grid";
@@ -80,6 +81,7 @@ export default async function HomePage() {
         emptyStateMessage="We're constantly adding new investment opportunities. Check back soon or sign up for notifications."
         sections={sections}
       />
+      <Footer />
     </div>
   );
 }
