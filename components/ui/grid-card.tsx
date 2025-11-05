@@ -35,18 +35,22 @@ export function GridCard({
     <div
       className={cn(
         "group relative isolate z-0 flex h-full flex-col justify-between overflow-hidden rounded-sm border bg-background px-5 py-4 transition-colors duration-75",
+        image ? "text-secondary" : "text-primary",
         className
       )}
       {...props}
     >
       <div className="absolute inset-0">
         {image ? (
-          <Image
-            alt={image.alt}
-            className="absolute inset-0 size-full object-cover opacity-10 transition-opacity duration-150 group-hover:opacity-30"
-            fill
-            src={image.src}
-          />
+          <>
+            <Image
+              alt={image.alt}
+              className="absolute inset-0 size-full object-cover opacity-95 transition-opacity duration-150 group-hover:opacity-80"
+              fill
+              src={image.src}
+            />
+            <div className="absolute inset-0 bg-linear-to-b from-transparent to-black/95" />
+          </>
         ) : (
           <>
             <div className="-inset-[25%] -skew-y-12 mask-[linear-gradient(225deg,black,transparent)] absolute">

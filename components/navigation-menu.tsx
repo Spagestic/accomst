@@ -117,7 +117,7 @@ function NavigationMenuViewport({
     <div className="absolute top-full left-0 isolate z-50 flex justify-center">
       <NavigationMenuPrimitive.Viewport
         className={cn(
-          "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full origin-top-center overflow-hidden rounded-md border bg-background/95 text-popover-foreground shadow backdrop-blur-xl data-[state=closed]:animate-out data-[state=open]:animate-in supports-[backdrop-filter]:bg-background/60 md:w-[var(--radix-navigation-menu-viewport-width)]",
+          "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-(--radix-navigation-menu-viewport-height) w-full origin-top-center overflow-hidden rounded-md border bg-background/95 text-popover-foreground shadow backdrop-blur-xl data-[state=closed]:animate-out data-[state=open]:animate-in supports-backdrop-filter:bg-background md:w-(--radix-navigation-menu-viewport-width)",
           className
         )}
         data-slot="navigation-menu-viewport"
@@ -167,18 +167,34 @@ function NavGridCard({
 }: React.ComponentProps<"div"> & {
   link: NavItemType;
 }) {
+  const hasImage = Boolean(link.image);
   return (
     <NavigationMenuPrimitive.Link asChild>
       <GridCard image={link.image} {...props}>
         {link.icon && (
-          <link.icon className="relative size-5 text-foreground/80" />
+          <link.icon
+            className={cn(
+              "relative size-5",
+              hasImage ? "text-secondary/90" : "text-primary/70"
+            )}
+          />
         )}
         <div className="relative">
-          <span className="font-medium text-foreground/80 text-sm">
+          <span
+            className={cn(
+              "font-medium text-sm",
+              hasImage ? "text-secondary" : "text-primary"
+            )}
+          >
             {link.title}
           </span>
           {link.description && (
-            <p className="mt-2 text-muted-foreground text-xs">
+            <p
+              className={cn(
+                "text-xs",
+                hasImage ? "text-secondary/80" : "text-primary/60"
+              )}
+            >
               {link.description}
             </p>
           )}
