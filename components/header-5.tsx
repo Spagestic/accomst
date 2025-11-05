@@ -200,7 +200,7 @@ export function Header5() {
           </Link>
         </div>
         <div className="hidden items-center gap-2 md:flex">
-          <NavigationMenu>
+          <NavigationMenu scrolled={scrolled}>
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Browse</NavigationMenuTrigger>

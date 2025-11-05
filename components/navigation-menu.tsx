@@ -20,9 +20,11 @@ function NavigationMenu({
   className,
   children,
   viewport = true,
+  scrolled,
   ...props
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Root> & {
   viewport?: boolean;
+  scrolled?: boolean;
 }) {
   return (
     <NavigationMenuPrimitive.Root
@@ -35,7 +37,7 @@ function NavigationMenu({
       {...props}
     >
       {children}
-      {viewport && <NavigationMenuViewport />}
+      {viewport && <NavigationMenuViewport scrolled={scrolled} />}
     </NavigationMenuPrimitive.Root>
   );
 }
@@ -111,13 +113,19 @@ function NavigationMenuContent({
 
 function NavigationMenuViewport({
   className,
+  scrolled,
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>) {
+}: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport> & {
+  scrolled?: boolean;
+}) {
   return (
     <div className="-translate-x-1/2 absolute top-full left-1/2 isolate z-50 flex justify-center">
       <NavigationMenuPrimitive.Viewport
         className={cn(
-          "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-(--radix-navigation-menu-viewport-height) w-full origin-top-center overflow-hidden rounded-md border bg-background/95 text-popover-foreground shadow backdrop-blur-xl data-[state=closed]:animate-out data-[state=open]:animate-in supports-backdrop-filter:bg-background md:w-(--radix-navigation-menu-viewport-width)",
+          "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-(--radix-navigation-menu-viewport-height) w-full origin-top-center overflow-hidden rounded-md border text-popover-foreground shadow data-[state=closed]:animate-out data-[state=open]:animate-in md:w-(--radix-navigation-menu-viewport-width)",
+          scrolled
+            ? "bg-background/95 blur-0 backdrop-blur-xl supports-backdrop-filter:bg-background/50"
+            : "bg-background blur-0",
           className
         )}
         data-slot="navigation-menu-viewport"
