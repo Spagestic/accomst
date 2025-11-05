@@ -150,7 +150,7 @@ export const companyLinks: NavItemType[] = [
   },
 ];
 
-export default function NavigationMenuDemo() {
+export default function Header4() {
   return (
     <div className="">
       <div
