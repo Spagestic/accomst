@@ -114,7 +114,7 @@ function NavigationMenuViewport({
   ...props
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>) {
   return (
-    <div className="absolute top-full left-0 isolate z-50 flex justify-center">
+    <div className="-translate-x-1/2 absolute top-full left-1/2 isolate z-50 flex justify-center">
       <NavigationMenuPrimitive.Viewport
         className={cn(
           "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-(--radix-navigation-menu-viewport-height) w-full origin-top-center overflow-hidden rounded-md border bg-background/95 text-popover-foreground shadow backdrop-blur-xl data-[state=closed]:animate-out data-[state=open]:animate-in supports-backdrop-filter:bg-background md:w-(--radix-navigation-menu-viewport-width)",
