@@ -169,9 +169,9 @@ export function Header5() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 mx-auto w-full max-w-7xl border-transparent border-b md:rounded-md md:border md:transition-all md:ease-out",
+        "sticky top-0 z-50 mx-auto w-full max-w-8xl border-transparent border-b md:rounded-md md:border md:transition-all md:ease-out",
         {
-          "border-border bg-background/95 backdrop-blur-lg supports-backdrop-filter:bg-background/50 md:top-4 md:max-w-5xl md:shadow":
+          "border-border bg-background/95 backdrop-blur-lg supports-backdrop-filter:bg-background/50 md:top-4 md:max-w-7xl md:shadow":
             scrolled && !open,
           "bg-background/90": open,
         }
@@ -179,7 +179,7 @@ export function Header5() {
     >
       <nav
         className={cn(
-          "flex h-14 w-full items-center justify-between px-4 md:h-12 md:transition-all md:ease-out",
+          "flex h-14 w-full items-center justify-between px-4 ease-out md:h-12 md:transition-all md:ease-out",
           {
             "md:px-2": scrolled,
           }
