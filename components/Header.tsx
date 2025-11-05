@@ -44,9 +44,6 @@ export default function Header() {
       </nav>
 
       <AuthButton />
-      {/* <Button className="bg-teal-800 px-6 text-white hover:bg-teal-900">
-        Explore Properties
-      </Button> */}
     </header>
   );
 }
