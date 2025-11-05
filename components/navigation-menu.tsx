@@ -124,7 +124,7 @@ function NavigationMenuViewport({
         className={cn(
           "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-(--radix-navigation-menu-viewport-height) w-full origin-top-center overflow-hidden rounded-md border text-popover-foreground shadow data-[state=closed]:animate-out data-[state=open]:animate-in md:w-(--radix-navigation-menu-viewport-width)",
           scrolled
-            ? "bg-background/95 blur-0 backdrop-blur-xl supports-backdrop-filter:bg-background/50"
+            ? "bg-background/95 backdrop-blur-lg supports-backdrop-filter:bg-background/80"
             : "bg-background blur-0",
           className
         )}
