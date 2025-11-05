@@ -1,0 +1,73 @@
+import { useId } from "react";
+
+import { cn } from "@/lib/utils";
+
+type GridPatternProps = {
+  width?: number;
+  height?: number;
+  x?: number;
+  y?: number;
+  squares?: [x: number, y: number][];
+  strokeDasharray?: string;
+  className?: string;
+  [key: string]: unknown;
+};
+
+function GridPattern({
+  width = 40,
+  height = 40,
+  x = -1,
+  y = -1,
+  strokeDasharray = "0",
+  squares,
+  className,
+  ...props
+}: GridPatternProps) {
+  const id = useId();
+
+  return (
+    <svg
+      aria-hidden="true"
+      className={cn(
+        "pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30",
+        className
+      )}
+      {...props}
+    >
+      <defs>
+        <pattern
+          height={height}
+          id={id}
+          patternUnits="userSpaceOnUse"
+          width={width}
+          x={x}
+          y={y}
+        >
+          <path
+            d={`M.5 ${height}V.5H${width}`}
+            fill="none"
+            strokeDasharray={strokeDasharray}
+          />
+        </pattern>
+      </defs>
+      <rect fill={`url(#${id})`} height="100%" strokeWidth={0} width="100%" />
+      {squares && (
+        <svg className="overflow-visible" x={x} y={y}>
+          <title>Highlighted grid squares</title>
+          {squares.map(([squareX, squareY]) => (
+            <rect
+              height={height - 1}
+              key={`${squareX}-${squareY}`}
+              strokeWidth="0"
+              width={width - 1}
+              x={squareX * width + 1}
+              y={squareY * height + 1}
+            />
+          ))}
+        </svg>
+      )}
+    </svg>
+  );
+}
+
+export { GridPattern };
