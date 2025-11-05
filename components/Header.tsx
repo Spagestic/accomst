@@ -1,14 +1,23 @@
-import { Waves } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { AuthButton } from "./auth/auth-button";
 
 export default function Header() {
   return (
     <header className="relative z-20 flex items-center justify-between py-2">
       {/* Logo */}
       <div className="flex items-center">
-        <Link href="/">
-          <Waves className="h-8 w-8" strokeWidth={2.5} />
+        <Link className="flex items-center font-semibold" href="/">
+          <Image
+            alt="Logo"
+            className="aspect-square size-10"
+            height={64}
+            src={"/logo_light.png"}
+            width={64}
+          />
+          <span className="ml-[-5] hidden text-gray-900 text-lg md:block">
+            ccomst
+          </span>
         </Link>
       </div>
 
@@ -34,9 +43,10 @@ export default function Header() {
         </Link>
       </nav>
 
-      <Button className="bg-teal-800 px-6 text-white hover:bg-teal-900">
+      <AuthButton />
+      {/* <Button className="bg-teal-800 px-6 text-white hover:bg-teal-900">
         Explore Properties
-      </Button>
+      </Button> */}
     </header>
   );
 }
