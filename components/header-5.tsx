@@ -40,7 +40,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { useScroll } from "@/components/use-scroll";
+import { useScroll } from "@/hooks/use-scroll";
 import { cn } from "@/lib/utils";
 
 export const productLinks: NavItemType[] = [

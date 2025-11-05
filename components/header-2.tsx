@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { MenuToggleIcon } from "@/components/menu-toggle-icon";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { useScroll } from "@/components/use-scroll";
+import { useScroll } from "@/hooks/use-scroll";
 import { cn } from "@/lib/utils";
 
 export function Header2() {
