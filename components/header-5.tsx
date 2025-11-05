@@ -199,7 +199,7 @@ export function Header5() {
             </span>
           </Link>
         </div>
-        <div className="hidden items-center gap-2 md:flex">
+        <div className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 hidden transform items-center gap-2 md:flex">
           <NavigationMenu scrolled={scrolled}>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -262,6 +262,8 @@ export function Header5() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
+        </div>
+        <div className="hidden items-center gap-2 md:flex">
           <Button variant="outline">
             <Link href="/auth/login">Login</Link>
           </Button>
@@ -269,14 +271,11 @@ export function Header5() {
             <Link href="/auth/sign-up">Get Started</Link>
           </Button>
         </div>
-        <Button
-          className="md:hidden"
-          onClick={() => setOpen(!open)}
-          size="icon"
-          variant="outline"
-        >
-          <MenuToggleIcon className="size-5" duration={300} open={open} />
-        </Button>
+        <div className="absolute right-4 md:hidden">
+          <Button onClick={() => setOpen(!open)} size="icon" variant="outline">
+            <MenuToggleIcon className="size-5" duration={300} open={open} />
+          </Button>
+        </div>
       </nav>
 
       <div
