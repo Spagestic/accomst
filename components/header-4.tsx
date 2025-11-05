@@ -52,18 +52,30 @@ export const productLinks: NavItemType[] = [
     href: "#",
     description: "Find properties in the heart of the city",
     icon: Building2,
+    image: {
+      src: "/hong_kong_island.png",
+      alt: "Hong Kong Island",
+    },
   },
   {
     title: "Kowloon",
     href: "#",
     description: "Discover vibrant properties in Kowloon",
     icon: Building,
+    image: {
+      src: "/kowloon.png",
+      alt: "Kowloon",
+    },
   },
   {
     title: "New Territories",
     href: "#",
     description: "Explore spacious properties in the New Territories",
     icon: Mountain,
+    image: {
+      src: "/new_territories.png",
+      alt: "New Territories",
+    },
   },
   {
     title: "Featured",

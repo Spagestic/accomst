@@ -1,6 +1,7 @@
 /** biome-ignore-all lint/style/noMagicNumbers: MagicNumbers */
 "use client";
 
+import Image from "next/image";
 import type React from "react";
 import { useMemo } from "react";
 import { GridPattern } from "@/components/ui/grid-pattern";
@@ -12,11 +13,19 @@ const RANDOM_X_MIN = 7;
 const RANDOM_Y_RANGE = 6;
 const RANDOM_Y_MIN = 1;
 
+type GridCardProps = React.ComponentProps<"div"> & {
+  image?: {
+    src: string;
+    alt: string;
+  };
+};
+
 export function GridCard({
   className,
   children,
+  image,
   ...props
-}: React.ComponentProps<"div">) {
+}: GridCardProps) {
   const randomPattern = useMemo(
     () => getRandomPattern(DEFAULT_PATTERN_LENGTH),
     []
@@ -31,22 +40,33 @@ export function GridCard({
       {...props}
     >
       <div className="absolute inset-0">
-        <div className="-inset-[25%] -skew-y-12 mask-[linear-gradient(225deg,black,transparent)] absolute">
-          <GridPattern
-            className="absolute inset-0 size-full translate-y-2 fill-border/50 stroke-border transition-transform duration-150 ease-out group-hover:translate-y-0"
-            height={30}
-            squares={randomPattern}
-            width={30}
-            x={0}
-            y={0}
+        {image ? (
+          <Image
+            alt={image.alt}
+            className="absolute inset-0 size-full object-cover opacity-10 transition-opacity duration-150 group-hover:opacity-30"
+            fill
+            src={image.src}
           />
-        </div>
-        <div
-          className={cn(
-            "-inset-[10%] absolute opacity-0 blur-[50px] transition-opacity duration-150 group-hover:opacity-10",
-            "bg-[conic-gradient(#F35066_0deg,#F35066_117deg,#9071F9_180deg,#5182FC_240deg,#F35066_360deg)]"
-          )}
-        />
+        ) : (
+          <>
+            <div className="-inset-[25%] -skew-y-12 mask-[linear-gradient(225deg,black,transparent)] absolute">
+              <GridPattern
+                className="absolute inset-0 size-full translate-y-2 fill-border/50 stroke-border transition-transform duration-150 ease-out group-hover:translate-y-0"
+                height={30}
+                squares={randomPattern}
+                width={30}
+                x={0}
+                y={0}
+              />
+            </div>
+            <div
+              className={cn(
+                "-inset-[10%] absolute opacity-0 blur-[50px] transition-opacity duration-150 group-hover:opacity-10",
+                "bg-[conic-gradient(#F35066_0deg,#F35066_117deg,#9071F9_180deg,#5182FC_240deg,#F35066_360deg)]"
+              )}
+            />
+          </>
+        )}
       </div>
       {children}
     </div>

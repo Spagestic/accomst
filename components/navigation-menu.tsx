@@ -10,6 +10,10 @@ export type NavItemType = {
   href: string;
   description?: string;
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  image?: {
+    src: string;
+    alt: string;
+  };
 };
 
 function NavigationMenu({
@@ -165,7 +169,7 @@ function NavGridCard({
 }) {
   return (
     <NavigationMenuPrimitive.Link asChild>
-      <GridCard {...props}>
+      <GridCard image={link.image} {...props}>
         {link.icon && (
           <link.icon className="relative size-5 text-foreground/80" />
         )}
