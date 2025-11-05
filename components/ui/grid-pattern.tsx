@@ -54,16 +54,23 @@ function GridPattern({
       {squares && (
         <svg className="overflow-visible" x={x} y={y}>
           <title>Highlighted grid squares</title>
-          {squares.map(([squareX, squareY]) => (
-            <rect
-              height={height - 1}
-              key={`${squareX}-${squareY}`}
-              strokeWidth="0"
-              width={width - 1}
-              x={squareX * width + 1}
-              y={squareY * height + 1}
-            />
-          ))}
+          {Array.from(
+            new Set(
+              squares.map(([squareX, squareY]) => `${squareX}-${squareY}`)
+            )
+          ).map((key) => {
+            const [squareX, squareY] = key.split("-").map(Number);
+            return (
+              <rect
+                height={height - 1}
+                key={key}
+                strokeWidth="0"
+                width={width - 1}
+                x={squareX * width + 1}
+                y={squareY * height + 1}
+              />
+            );
+          })}
         </svg>
       )}
     </svg>

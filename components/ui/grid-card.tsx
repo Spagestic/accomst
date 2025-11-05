@@ -1,13 +1,27 @@
 /** biome-ignore-all lint/style/noMagicNumbers: MagicNumbers */
+"use client";
+
 import type React from "react";
+import { useMemo } from "react";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import { cn } from "@/lib/utils";
+
+const DEFAULT_PATTERN_LENGTH = 5;
+const RANDOM_X_RANGE = 4;
+const RANDOM_X_MIN = 7;
+const RANDOM_Y_RANGE = 6;
+const RANDOM_Y_MIN = 1;
 
 export function GridCard({
   className,
   children,
   ...props
 }: React.ComponentProps<"div">) {
+  const randomPattern = useMemo(
+    () => getRandomPattern(DEFAULT_PATTERN_LENGTH),
+    []
+  );
+
   return (
     <div
       className={cn(
@@ -21,7 +35,7 @@ export function GridCard({
           <GridPattern
             className="absolute inset-0 size-full translate-y-2 fill-border/50 stroke-border transition-transform duration-150 ease-out group-hover:translate-y-0"
             height={30}
-            squares={getRandomPattern(5)}
+            squares={randomPattern}
             width={30}
             x={0}
             y={0}
@@ -40,9 +54,9 @@ export function GridCard({
 }
 
 function getRandomPattern(length?: number): [x: number, y: number][] {
-  const patternLength = length ?? 5;
+  const patternLength = length ?? DEFAULT_PATTERN_LENGTH;
   return Array.from({ length: patternLength }, () => [
-    Math.floor(Math.random() * 4) + 7, // random x between 7 and 10
-    Math.floor(Math.random() * 6) + 1, // random y between 1 and 6
+    Math.floor(Math.random() * RANDOM_X_RANGE) + RANDOM_X_MIN,
+    Math.floor(Math.random() * RANDOM_Y_RANGE) + RANDOM_Y_MIN,
   ]);
 }
