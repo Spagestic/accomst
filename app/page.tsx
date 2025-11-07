@@ -2,7 +2,6 @@
 /** biome-ignore-all lint/style/noMagicNumbers: minor */
 import { Footer } from "@/components/footer";
 import HeroSection from "@/components/HeroSection";
-import { Header5 } from "@/components/header-5";
 import PropertyGrid from "@/components/property-grid";
 import {
   getFeaturedProperties,
@@ -74,7 +73,6 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen bg-background p-4">
-      <Header5 />
       <HeroSection />
       <PropertyGrid
         emptyStateMessage="We're constantly adding new investment opportunities. Check back soon or sign up for notifications."
