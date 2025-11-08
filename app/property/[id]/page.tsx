@@ -1,5 +1,6 @@
 // app/property/[id]/page.tsx
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { FractionalOwnershipCard } from "@/components/property/FractionalOwnershipCard";
 import { InvestmentOverview } from "@/components/property/InvestmentOverview";
 import { PropertyAmenities } from "@/components/property/PropertyAmenities";
@@ -10,11 +11,19 @@ import { PropertyHeader } from "@/components/property/PropertyHeader";
 import { PropertyLocation } from "@/components/property/PropertyLocation";
 import { getAllProperties } from "@/lib/properties";
 
-export default async function PropertyPage({
+export default function PropertyPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PageContent params={params} />
+    </Suspense>
+  );
+}
+
+async function PageContent({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
   // Get properties from the properties.ts file
