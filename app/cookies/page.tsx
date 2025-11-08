@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 export default function CookiesPage() {
   return (
     <div className="min-h-screen bg-background px-4 py-12 sm:px-6 lg:px-8">
@@ -19,12 +17,9 @@ export default function CookiesPage() {
         </div>
 
         <div className="space-y-8">
-          {/* Introduction */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">1. What Are Cookies?</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
+          <section className="mb-8">
+            <h2 className="mb-2 font-bold text-2xl">1. What Are Cookies?</h2>
+            <div className="space-y-4 text-muted-foreground">
               <p>
                 Cookies are small text files stored on your device when you
                 visit our website. They help us remember your preferences, keep
@@ -35,101 +30,90 @@ export default function CookiesPage() {
                 Similar technologies include web beacons, pixels, and local
                 storage mechanisms that serve similar purposes.
               </p>
-            </CardContent>
-          </Card>
+            </div>
+          </section>
 
-          {/* Types of Cookies */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">
-                2. Types of Cookies We Use
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
-              <div className="space-y-4">
-                <div>
-                  <h4 className="mb-2 font-semibold text-foreground">
-                    Essential Cookies
-                  </h4>
-                  <p>
-                    These cookies are necessary for the website to function
-                    properly. They enable user authentication, security
-                    features, and basic platform functionality. These cannot be
-                    disabled without affecting site performance.
-                  </p>
-                  <ul className="ml-2 list-inside list-disc space-y-1">
-                    <li>Session tokens for user authentication</li>
-                    <li>CSRF protection tokens</li>
-                    <li>Security and fraud prevention</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="mb-2 font-semibold text-foreground">
-                    Performance Cookies
-                  </h4>
-                  <p>
-                    These cookies help us understand how users interact with our
-                    platform by collecting anonymous usage data. This helps us
-                    optimize performance and identify technical issues.
-                  </p>
-                  <ul className="ml-2 list-inside list-disc space-y-1">
-                    <li>Page load times and errors</li>
-                    <li>Feature usage patterns</li>
-                    <li>Navigation flow analysis</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="mb-2 font-semibold text-foreground">
-                    Functional Cookies
-                  </h4>
-                  <p>
-                    These cookies remember your preferences and choices to
-                    enhance your experience, such as language preference, layout
-                    preferences, and saved searches.
-                  </p>
-                  <ul className="ml-2 list-inside list-disc space-y-1">
-                    <li>Language and regional preferences</li>
-                    <li>UI preferences (light/dark mode)</li>
-                    <li>Recently viewed properties</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="mb-2 font-semibold text-foreground">
-                    Marketing Cookies
-                  </h4>
-                  <p>
-                    These cookies track your behavior to deliver personalized
-                    advertisements and marketing messages. You can opt-out of
-                    these cookies.
-                  </p>
-                  <ul className="ml-2 list-inside list-disc space-y-1">
-                    <li>Targeted advertising</li>
-                    <li>Campaign effectiveness tracking</li>
-                    <li>User interest profiling</li>
-                  </ul>
-                </div>
+          <section className="mb-8">
+            <h2 className="mb-2 font-bold text-2xl">
+              2. Types of Cookies We Use
+            </h2>
+            <div className="space-y-4 text-muted-foreground">
+              <div>
+                <h3 className="mb-2 font-semibold text-foreground">
+                  Essential Cookies
+                </h3>
+                <p>
+                  These cookies are necessary for the website to function
+                  properly. They enable user authentication, security features,
+                  and basic platform functionality. These cannot be disabled
+                  without affecting site performance.
+                </p>
+                <ul className="ml-2 list-inside list-disc space-y-1">
+                  <li>Session tokens for user authentication</li>
+                  <li>CSRF protection tokens</li>
+                  <li>Security and fraud prevention</li>
+                </ul>
               </div>
-            </CardContent>
-          </Card>
+              <div>
+                <h3 className="mb-2 font-semibold text-foreground">
+                  Performance Cookies
+                </h3>
+                <p>
+                  These cookies help us understand how users interact with our
+                  platform by collecting anonymous usage data. This helps us
+                  optimize performance and identify technical issues.
+                </p>
+                <ul className="ml-2 list-inside list-disc space-y-1">
+                  <li>Page load times and errors</li>
+                  <li>Feature usage patterns</li>
+                  <li>Navigation flow analysis</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="mb-2 font-semibold text-foreground">
+                  Functional Cookies
+                </h3>
+                <p>
+                  These cookies remember your preferences and choices to enhance
+                  your experience, such as language preference, layout
+                  preferences, and saved searches.
+                </p>
+                <ul className="ml-2 list-inside list-disc space-y-1">
+                  <li>Language and regional preferences</li>
+                  <li>UI preferences (light/dark mode)</li>
+                  <li>Recently viewed properties</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="mb-2 font-semibold text-foreground">
+                  Marketing Cookies
+                </h3>
+                <p>
+                  These cookies track your behavior to deliver personalized
+                  advertisements and marketing messages. You can opt-out of
+                  these cookies.
+                </p>
+                <ul className="ml-2 list-inside list-disc space-y-1">
+                  <li>Targeted advertising</li>
+                  <li>Campaign effectiveness tracking</li>
+                  <li>User interest profiling</li>
+                </ul>
+              </div>
+            </div>
+          </section>
 
-          {/* Third-Party Cookies */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">3. Third-Party Cookies</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
+          <section className="mb-8">
+            <h2 className="mb-2 font-bold text-2xl">3. Third-Party Cookies</h2>
+            <div className="space-y-4 text-muted-foreground">
               <p>
                 We work with third-party service providers who may set their own
                 cookies:
               </p>
               <div className="space-y-3">
                 <div>
-                  <h4 className="mb-2 font-semibold text-foreground">
+                  <h3 className="mb-2 font-semibold text-foreground">
                     Google Analytics
-                  </h4>
+                  </h3>
                   <p>
                     We use Google Analytics to track website traffic and user
                     behavior. Google may place cookies on your device. See{" "}
@@ -145,33 +129,30 @@ export default function CookiesPage() {
                   </p>
                 </div>
                 <div>
-                  <h4 className="mb-2 font-semibold text-foreground">
+                  <h3 className="mb-2 font-semibold text-foreground">
                     Authentication Providers
-                  </h4>
+                  </h3>
                   <p>
                     Third-party authentication services (e.g., Google OAuth) may
                     set cookies for their services.
                   </p>
                 </div>
                 <div>
-                  <h4 className="mb-2 font-semibold text-foreground">
+                  <h3 className="mb-2 font-semibold text-foreground">
                     Payment Processors
-                  </h4>
+                  </h3>
                   <p>
                     Payment processing services may set cookies for transaction
                     security and fraud prevention.
                   </p>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </section>
 
-          {/* How We Use Cookies */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">4. How We Use Cookies</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
+          <section className="mb-8">
+            <h2 className="mb-2 font-bold text-2xl">4. How We Use Cookies</h2>
+            <div className="space-y-4 text-muted-foreground">
               <ul className="list-inside list-disc space-y-2">
                 <li>To authenticate your identity and keep you logged in</li>
                 <li>To remember your preferences and settings</li>
@@ -181,29 +162,26 @@ export default function CookiesPage() {
                 <li>To deliver personalized content and recommendations</li>
                 <li>To measure the effectiveness of marketing campaigns</li>
               </ul>
-            </CardContent>
-          </Card>
+            </div>
+          </section>
 
-          {/* Cookie Duration */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">5. Cookie Duration</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
+          <section className="mb-8">
+            <h2 className="mb-2 font-bold text-2xl">5. Cookie Duration</h2>
+            <div className="space-y-4 text-muted-foreground">
               <div className="space-y-3">
                 <div>
-                  <h4 className="mb-2 font-semibold text-foreground">
+                  <h3 className="mb-2 font-semibold text-foreground">
                     Session Cookies
-                  </h4>
+                  </h3>
                   <p>
                     These cookies expire when you close your browser. They
                     include authentication tokens and temporary preferences.
                   </p>
                 </div>
                 <div>
-                  <h4 className="mb-2 font-semibold text-foreground">
+                  <h3 className="mb-2 font-semibold text-foreground">
                     Persistent Cookies
-                  </h4>
+                  </h3>
                   <p>
                     These cookies remain on your device for a specified period
                     (typically 1 month to 2 years) and remember your preferences
@@ -211,15 +189,12 @@ export default function CookiesPage() {
                   </p>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </section>
 
-          {/* Your Cookie Choices */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">6. Your Cookie Choices</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
+          <section className="mb-8">
+            <h2 className="mb-2 font-bold text-2xl">6. Your Cookie Choices</h2>
+            <div className="space-y-4 text-muted-foreground">
               <p>You have control over cookies on your device. You can:</p>
               <ul className="mt-3 list-inside list-disc space-y-2">
                 <li>
@@ -247,17 +222,14 @@ export default function CookiesPage() {
                 <strong>Note:</strong> Disabling essential cookies may prevent
                 you from using certain platform features.
               </p>
-            </CardContent>
-          </Card>
+            </div>
+          </section>
 
-          {/* Cookie Banner */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">
-                7. Cookie Consent Banner
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
+          <section className="mb-8">
+            <h2 className="mb-2 font-bold text-2xl">
+              7. Cookie Consent Banner
+            </h2>
+            <div className="space-y-4 text-muted-foreground">
               <p>
                 When you first visit ACCOMST, you'll see a cookie consent
                 banner. You can:
@@ -279,17 +251,14 @@ export default function CookiesPage() {
                 You can change your cookie preferences at any time through your
                 account settings.
               </p>
-            </CardContent>
-          </Card>
+            </div>
+          </section>
 
-          {/* Tracking Technologies */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">
-                8. Other Tracking Technologies
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
+          <section className="mb-8">
+            <h2 className="mb-2 font-bold text-2xl">
+              8. Other Tracking Technologies
+            </h2>
+            <div className="space-y-4 text-muted-foreground">
               <p>Beyond cookies, we may use:</p>
               <ul className="mt-3 list-inside list-disc space-y-2">
                 <li>
@@ -309,17 +278,14 @@ export default function CookiesPage() {
                   and platform performance
                 </li>
               </ul>
-            </CardContent>
-          </Card>
+            </div>
+          </section>
 
-          {/* Data Security */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">
-                9. Data Security & Privacy
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
+          <section className="mb-8">
+            <h2 className="mb-2 font-bold text-2xl">
+              9. Data Security & Privacy
+            </h2>
+            <div className="space-y-4 text-muted-foreground">
               <p>
                 All data collected through cookies is encrypted and stored
                 securely. Personal information is never shared with third
@@ -330,15 +296,12 @@ export default function CookiesPage() {
                 </Link>
                 .
               </p>
-            </CardContent>
-          </Card>
+            </div>
+          </section>
 
-          {/* GDPR/PDPO Compliance */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">10. Legal Compliance</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
+          <section className="mb-8">
+            <h2 className="mb-2 font-bold text-2xl">10. Legal Compliance</h2>
+            <div className="space-y-4 text-muted-foreground">
               <p>Our cookie practices comply with:</p>
               <ul className="mt-3 list-inside list-disc space-y-2">
                 <li>
@@ -354,32 +317,26 @@ export default function CookiesPage() {
                   requirements
                 </li>
               </ul>
-            </CardContent>
-          </Card>
+            </div>
+          </section>
 
-          {/* Updates to Policy */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">
-                11. Changes to This Policy
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
+          <section className="mb-8">
+            <h2 className="mb-2 font-bold text-2xl">
+              11. Changes to This Policy
+            </h2>
+            <div className="space-y-4 text-muted-foreground">
               <p>
                 We may update this Cookies Policy periodically. The "Last
                 updated" date at the top indicates the most recent version. We
                 will notify you of significant changes through the platform or
                 email.
               </p>
-            </CardContent>
-          </Card>
+            </div>
+          </section>
 
-          {/* Contact */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">12. Questions?</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
+          <section className="mb-8">
+            <h2 className="mb-2 font-bold text-2xl">12. Questions?</h2>
+            <div className="space-y-4 text-muted-foreground">
               <p>If you have questions about our use of cookies:</p>
               <div className="space-y-2 rounded-lg bg-muted p-4">
                 <p>
@@ -389,8 +346,8 @@ export default function CookiesPage() {
                   <strong>Address:</strong> ACCOMST, Hong Kong
                 </p>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </section>
         </div>
       </div>
     </div>
