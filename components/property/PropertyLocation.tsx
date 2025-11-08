@@ -1,6 +1,13 @@
 // components/property/PropertyLocation.tsx
 
 import { MapPin, Train } from "lucide-react";
+import {
+  Map as MapComponent,
+  MapMarker,
+  MapPopup,
+  MapTileLayer,
+  MapZoomControl,
+} from "@/components/ui/map";
 import type { Property } from "@/types/property";
 
 type PropertyLocationProps = {
@@ -49,9 +56,23 @@ export function PropertyLocation({ property }: PropertyLocationProps) {
           </div>
         )}
       <div className="flex h-[250px] items-center justify-center rounded-xl bg-secondary md:h-[400px]">
-        <p className="text-muted-foreground text-sm md:text-base">
-          Map integration coming soon
-        </p>
+        <MapComponent
+          center={[
+            property.location.latitude ?? 0,
+            property.location.longitude ?? 0,
+          ]}
+        >
+          <MapTileLayer />
+          <MapZoomControl />
+          <MapMarker
+            position={[
+              property.location.latitude ?? 0,
+              property.location.longitude ?? 0,
+            ]}
+          >
+            <MapPopup>{property.location.address}</MapPopup>
+          </MapMarker>
+        </MapComponent>
       </div>
     </div>
   );
