@@ -2,10 +2,24 @@
 /** biome-ignore-all lint/style/noMagicNumbers: <explanation> */
 "use client";
 
-import { ChevronDown, ChevronUp, Info } from "lucide-react";
+import { Info } from "lucide-react";
 import { useState } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import type { Property } from "@/types/property";
 
 type FractionalOwnershipCardProps = {
@@ -16,7 +30,6 @@ export function FractionalOwnershipCard({
   property,
 }: FractionalOwnershipCardProps) {
   const [selectedFractions, setSelectedFractions] = useState(1);
-  const [showBreakdown, setShowBreakdown] = useState(false);
 
   const initialInvestment =
     property.financial.pricePerFraction * selectedFractions;
@@ -35,7 +48,7 @@ export function FractionalOwnershipCard({
   return (
     <div className="lg:col-span-1">
       <Card className="sticky top-4 p-4 shadow-lg md:top-24 md:p-6">
-        <div className="mb-4 md:mb-6">
+        <div className="">
           <div className="mb-2 flex items-baseline gap-2">
             <span className="font-semibold text-2xl text-text-primary md:text-[26px]">
               HK${property.financial.pricePerFraction.toLocaleString()}
@@ -60,35 +73,35 @@ export function FractionalOwnershipCard({
           </div>
         </div>
 
-        <div className="mb-4 space-y-3 md:mb-6 md:space-y-4">
+        <div className="space-y-3 md:space-y-4">
           <div>
-            <label
-              className="mb-2 block font-medium text-sm text-text-primary"
-              htmlFor="equity-stake-select"
-            >
+            <Label className="mb-2 block" htmlFor="equity-stake-select">
               Select equity stake
-            </label>
-            <select
-              className="w-full rounded-lg border border-border bg-background p-3 text-sm text-text-primary outline-none focus:ring-2 focus:ring-primary"
-              id="equity-stake-select"
-              onChange={(e) => setSelectedFractions(Number(e.target.value))}
-              value={selectedFractions}
+            </Label>
+            <Select
+              onValueChange={(value) => setSelectedFractions(Number(value))}
+              value={selectedFractions.toString()}
             >
-              {Array.from(
-                { length: property.financial.availableFractions },
-                (_, i) => i + 1
-              ).map((num) => (
-                <option key={num} value={num}>
-                  {num} fraction{num > 1 ? "s" : ""} (
-                  {(property.financial.fractionSize * num * 100).toFixed(1)}%
-                  ownership)
-                </option>
-              ))}
-            </select>
+              <SelectTrigger className="w-full" id="equity-stake-select">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {Array.from(
+                  { length: property.financial.availableFractions },
+                  (_, i) => i + 1
+                ).map((num) => (
+                  <SelectItem key={num} value={num.toString()}>
+                    {num} fraction{num > 1 ? "s" : ""} (
+                    {(property.financial.fractionSize * num * 100).toFixed(1)}%
+                    ownership)
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
-          <div className="rounded-lg bg-secondary p-3 md:p-4">
-            <div className="mb-2 flex items-center justify-between">
+          <div className="rounded-lg bg-secondary p-2">
+            <div className="flex items-center justify-between">
               <span className="text-sm text-text-primary md:text-base">
                 Your equity stake
               </span>
@@ -116,71 +129,65 @@ export function FractionalOwnershipCard({
           </div>
         </div>
 
-        <Button className="mb-3 h-12 w-full bg-primary font-semibold text-base text-primary-foreground hover:bg-primary/90 md:mb-4">
+        <Button className="h-12 w-full bg-primary font-semibold text-base text-primary-foreground hover:bg-primary/90">
           Purchase Equity Stake
         </Button>
 
-        <p className="mb-4 text-center text-muted-foreground text-xs md:mb-6 md:text-sm">
+        <p className="text-center text-muted-foreground text-xs md:text-sm">
           Secure your ownership through our regulated SPV structure
         </p>
 
-        <button
-          className="flex w-full items-center justify-between text-sm text-text-primary md:text-base"
-          onClick={() => setShowBreakdown(!showBreakdown)}
-          type="button"
-        >
-          <span className="font-medium">Cost breakdown</span>
-          {showBreakdown ? (
-            <ChevronUp className="h-4 w-4" />
-          ) : (
-            <ChevronDown className="h-4 w-4" />
-          )}
-        </button>
+        <Accordion className="w-full" collapsible type="single">
+          <AccordionItem value="cost-breakdown">
+            <AccordionTrigger className="text-sm text-text-primary md:text-base">
+              <span className="font-medium">Cost breakdown</span>
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-2 text-sm md:space-y-3 md:text-base">
+                <div className="flex justify-between text-text-primary">
+                  <span>Initial investment</span>
+                  <span>HK${initialInvestment.toLocaleString()}</span>
+                </div>
+                <div className="flex justify-between text-text-primary">
+                  <div className="flex items-center gap-1">
+                    <span>Platform fee</span>
+                    <Info className="h-3 w-3 text-muted-foreground" />
+                  </div>
+                  <span>HK${platformFee.toLocaleString()}</span>
+                </div>
+                <div className="flex justify-between text-text-primary">
+                  <div className="flex items-center gap-1">
+                    <span>Stamp duty</span>
+                    <Info className="h-3 w-3 text-muted-foreground" />
+                  </div>
+                  <span>HK${stampDuty.toLocaleString()}</span>
+                </div>
+                <div className="flex justify-between border-border border-t pt-3 font-semibold text-text-primary">
+                  <span>Total upfront</span>
+                  <span>HK${totalCost.toLocaleString()}</span>
+                </div>
+                <div className="mt-4 rounded-lg bg-green-50 p-3 dark:bg-green-950/20">
+                  <div className="flex justify-between text-green-700 dark:text-green-400">
+                    <span className="font-medium">Your monthly rent</span>
+                    <span className="font-semibold">
+                      HK${monthlyRent.toLocaleString()}
+                    </span>
+                  </div>
+                  <p className="mt-1 text-green-600 text-xs dark:text-green-500">
+                    Only on landlord's{" "}
+                    {(
+                      100 -
+                      property.financial.fractionSize * selectedFractions * 100
+                    ).toFixed(1)}
+                    % stake
+                  </p>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
 
-        {showBreakdown && (
-          <div className="mt-4 space-y-2 border-border border-t pt-4 text-sm md:space-y-3 md:text-base">
-            <div className="flex justify-between text-text-primary">
-              <span>Initial investment</span>
-              <span>HK${initialInvestment.toLocaleString()}</span>
-            </div>
-            <div className="flex justify-between text-text-primary">
-              <div className="flex items-center gap-1">
-                <span>Platform fee</span>
-                <Info className="h-3 w-3 text-muted-foreground" />
-              </div>
-              <span>HK${platformFee.toLocaleString()}</span>
-            </div>
-            <div className="flex justify-between text-text-primary">
-              <div className="flex items-center gap-1">
-                <span>Stamp duty</span>
-                <Info className="h-3 w-3 text-muted-foreground" />
-              </div>
-              <span>HK${stampDuty.toLocaleString()}</span>
-            </div>
-            <div className="flex justify-between border-border border-t pt-3 font-semibold text-text-primary">
-              <span>Total upfront</span>
-              <span>HK${totalCost.toLocaleString()}</span>
-            </div>
-            <div className="mt-4 rounded-lg bg-green-50 p-3 dark:bg-green-950/20">
-              <div className="flex justify-between text-green-700 dark:text-green-400">
-                <span className="font-medium">Your monthly rent</span>
-                <span className="font-semibold">
-                  HK${monthlyRent.toLocaleString()}
-                </span>
-              </div>
-              <p className="mt-1 text-green-600 text-xs dark:text-green-500">
-                Only on landlord's{" "}
-                {(
-                  100 -
-                  property.financial.fractionSize * selectedFractions * 100
-                ).toFixed(1)}
-                % stake
-              </p>
-            </div>
-          </div>
-        )}
-
-        <div className="mt-4 space-y-2 rounded-lg bg-blue-50 p-3 md:mt-6 md:p-4 dark:bg-blue-950/20">
+        <div className="space-y-2 rounded-lg bg-blue-50 p-3 md:p-4 dark:bg-blue-950/20">
           <p className="font-medium text-blue-900 text-sm dark:text-blue-100">
             Build to 100% ownership
           </p>
