@@ -1,5 +1,6 @@
 // lib/properties.ts
 /** biome-ignore-all lint/style/noMagicNumbers: dealing with percentages */
+
 import type { Property } from "@/types/property";
 
 // Hong Kong Island Properties - Premium locations
@@ -830,6 +831,7 @@ export function getKowloonProperties(): Promise<Property[]> {
 
 // Helper functions for filtering and calculations
 export async function getAllProperties(): Promise<Property[]> {
+  "use cache";
   const [hkIsland, kowloon] = await Promise.all([
     getHongKongIslandProperties(),
     getKowloonProperties(),
