@@ -9,6 +9,7 @@ import { PropertyDetails } from "@/components/property/PropertyDetails";
 import { PropertyGallery } from "@/components/property/PropertyGallery";
 import { PropertyHeader } from "@/components/property/PropertyHeader";
 import { PropertyLocation } from "@/components/property/PropertyLocation";
+import { PropertyPageSkeleton } from "@/components/property/PropertyPageSkeleton";
 import { getAllProperties } from "@/lib/properties";
 
 export default function PropertyPage({
@@ -17,7 +18,7 @@ export default function PropertyPage({
   params: Promise<{ id: string }>;
 }) {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<PropertyPageSkeleton />}>
       <PageContent params={params} />
     </Suspense>
   );
