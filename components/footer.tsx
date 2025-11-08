@@ -36,7 +36,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="border-white/2 border-t bg-white/2">
+    <footer className="border-white/2 border-t bg-white/2 px-4">
       <div className="container-custom pt-16 pb-4 lg:pt-10">
         {/* Main Footer Content */}
         <div className="mb-12 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
